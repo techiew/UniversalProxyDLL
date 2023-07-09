@@ -43,7 +43,7 @@ Yes, technically this is not *universal*, only on paper. See section "Adding sup
 * dxgi
 * d3d10
 * d3d11
-* ~~d3d12~~ (see issue #1)
+* ~~d3d12~~ (see issue [#1](https://github.com/techiew/UniversalProxyDLL/issues/1))
 * dinput8
 * XInput1_3
 * XInput1_4
