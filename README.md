@@ -34,10 +34,10 @@ Adding a callback for one of the exported functions:
 
 Your function will be called when the exported function is called **(directly prior to it)**.
 
-You'll have to know and specify the correct function signature in the same manner as shown in the example. The function signature for "DirectInput8Create" used in the example was found [here](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/ee416756(v=vs.85)).
+You'll have to know and specify the correct function signature in the same manner as shown in the example. For instance, the function signature for "DirectInput8Create" used in the example was found [here](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/ee416756(v=vs.85)).
 
 ## Supported DLLs
-Yes, technically this is not *universal*, only on paper. See section "Add support for a DLL". 
+Yes, technically this is not *universal*, only on paper. See section "Adding support for a DLL". 
 
 The most common proxy DLLs are supported out of the box:
 * dxgi
