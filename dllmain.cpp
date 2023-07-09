@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <iostream>
 
 #include "UniversalProxyDLL.h"
 
@@ -14,9 +15,18 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 {
 	if (fdwReason == DLL_PROCESS_ATTACH)
 	{
-		UPD::OpenDebugTerminal();
-		fpDirectInput8Create = UPD::RegisterCallback("DirectInput8Create", &CallbackDirectInput8Create);
-		UPD::CreateProxy(hinstDLL);
+		DisableThreadLibraryCalls(hinstDLL);
+		try
+		{
+			UPD::OpenDebugTerminal();
+			fpDirectInput8Create = UPD::RegisterCallback("DirectInput8Create", &CallbackDirectInput8Create);
+			UPD::CreateProxy(hinstDLL);
+		}
+		catch (std::runtime_error e)
+		{
+			std::cout << e.what() << std::endl;
+			return FALSE;
+		}
 	}
     return TRUE;
 }
