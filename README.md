@@ -1,6 +1,8 @@
 # Universal Proxy DLL
 A header-only library for proxying DLLs with one function call.
 
+![One function call pic](https://github.com/techiew/UniversalProxyDLL/blob/master/pictures/one_function_call.png)
+
 ### Features:
 * No .masm or .def files required
 * No project configuration required
