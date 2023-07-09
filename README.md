@@ -6,7 +6,7 @@ A header-only library for proxying DLLs with one function call:
 ### Features:
 * No .masm or .def files required
 * No project configuration required
-* Built DLL can dynamically proxy any [supported DLL](https://github.com/techiew/UniversalProxyDLL/blob/master/README.md#supported-dlls) without rebuilding (just rename the DLL)
+* Built DLL can dynamically proxy any [supported DLL](https://github.com/techiew/UniversalProxyDLL/tree/master#supported-dlls) without rebuilding (just rename the DLL)
 * Set [callbacks](https://github.com/techiew/UniversalProxyDLL/blob/master/README.md#supported-dlls) for exported functions
 * No race conditions (exported functions will wait for proxy creation)
 * No [LoadLibrary calls](https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-best-practices) within DllMain
