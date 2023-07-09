@@ -28,7 +28,7 @@ You can then create a new thread and do the usual proxy DLL stuff:
 ![Usual proxy stuff pic](https://github.com/techiew/UniversalProxyDLL/blob/master/pictures/usual_proxy_stuff.png)
 
 ## Callback example
-Adding a callback for one of the exported functions:
+Adding a callback for one of the exported functions (dinput8.dll was used in this example):
 
 ![Callback example pic](https://github.com/techiew/UniversalProxyDLL/blob/master/pictures/callback_example.png)
 
