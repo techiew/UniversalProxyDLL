@@ -39,7 +39,7 @@ You'll have to know and specify the correct function signature in the same manne
 ## Supported DLLs
 Yes, technically this is not *universal*, only on paper. See section "Adding support for a DLL". 
 
-The most common proxy DLLs are supported out of the box:
+**The most common proxy DLLs are supported out of the box:**
 * dxgi
 * d3d10
 * d3d11
@@ -53,7 +53,7 @@ The most common proxy DLLs are supported out of the box:
 * winhttp
 * bink2w64
 
-I do not guarantee that all supported DLLs will work for 32-bit games. Trial and error is required in this case.
+**Note: I do not guarantee that all supported DLLs will work for 32-bit games. Trial and error is required in this case.**
 
 ## Adding support for a DLL
 Adding support for a DLL is simple. In the "scripts" folder you will find some Python scripts. 
