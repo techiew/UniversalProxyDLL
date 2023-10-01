@@ -1,7 +1,12 @@
 import sys
 import os
 import subprocess
-import pefile
+
+try:
+    import pefile
+except ImportError as e:
+    print("To run this script, please install the 'pefile' package: 'pip install pefile'.")
+    sys.exit(1)
 
 if len(sys.argv) != 2:
     print("Argument error")
