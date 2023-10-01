@@ -21,20 +21,20 @@ Is all that is needed, the DLL is then proxied properly (dxgi.dll was used in th
 
 ![Proxy example pic](https://github.com/techiew/UniversalProxyDLL/blob/master/pictures/proxy_example.png)
 
-**Note: The debug terminal is optional of course.**
+**Note: The debug terminal is optional.**
 
 You can then create a new thread and do the usual proxy DLL stuff:
 
 ![Usual proxy stuff pic](https://github.com/techiew/UniversalProxyDLL/blob/master/pictures/usual_proxy_stuff.png)
 
 ## Callback example
-Adding a callback for one of the exported functions (dinput8.dll was used in this example):
+You may add callbacks to exported functions (dinput8.dll was used in this example):
 
 ![Callback example pic](https://github.com/techiew/UniversalProxyDLL/blob/master/pictures/callback_example.png)
 
-Your function will be called when the exported function is called **(directly prior to it)**.
+Your callback will be called when the exported function is called **(directly prior to it)**.
 
-You'll have to know and specify the correct function signature in the same manner as shown in the example. For instance, the function signature for "DirectInput8Create" used in the example was found [here](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/ee416756(v=vs.85)).
+Note: You'll have to specify the correct function signature in the same manner as shown in the example. For instance, the function signature for "DirectInput8Create" used in the example was found [here](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/ee416756(v=vs.85)).
 
 ## Supported DLLs
 Yes, technically this is not *universal*, only on paper. See section "Adding support for a DLL". 
