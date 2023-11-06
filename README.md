@@ -6,8 +6,8 @@ A header-only library for proxying DLLs with one function call:
 ### Features:
 * No .masm or .def files required
 * No project configuration required
-* Built DLL can dynamically proxy any [supported DLL](https://github.com/techiew/UniversalProxyDLL/tree/master#supported-dlls) without rebuilding (just rename the DLL)
-* Set [callbacks](https://github.com/techiew/UniversalProxyDLL/tree/master#callback-example) for exported functions
+* Built DLL can dynamically proxy any [supported DLL](https://github.com/techiew/UniversalProxyDLL#supported-dlls) without rebuilding (just rename the DLL)
+* Set [callbacks](https://github.com/techiew/UniversalProxyDLL#callback-example) for exported functions
 * No race conditions (exported functions will wait for proxy creation)
 * No [LoadLibrary calls](https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-best-practices) within DllMain
 * Works for 32-bit and 64-bit games (32-bit has limited support!)
@@ -17,7 +17,7 @@ A simple DLL with a DllMain looking like this:
 
 ![DllMain example pic](https://github.com/techiew/UniversalProxyDLL/blob/master/pictures/dllmain_example.png)
 
-Is all that is needed, the DLL is then proxied properly (dxgi.dll was used in this example):
+Is all that is needed, the DLL is then proxied properly (dxgi.dll was proxied in this example):
 
 ![Proxy example pic](https://github.com/techiew/UniversalProxyDLL/blob/master/pictures/proxy_example.png)
 
@@ -58,11 +58,11 @@ Yes, technically this is not *universal*, only on paper. See section "Adding sup
 ## Adding support for a DLL
 Adding support for a DLL is simple. In the "scripts" folder you will find some Python scripts. 
 
-Use the "create_export_list.py" script by running `python create_export_list.py <path_to_dll>`. This will generate a "&lt;dll&gt;_export_list.txt" file in the script folder:
+Use the "create_export_list.py" script by running `python create_export_list.py <path_to_dll>`. This will create a "&lt;dll&gt;_export_list.txt" file in the script folder:
 
 ![create_export_list pic](https://github.com/techiew/UniversalProxyDLL/blob/master/pictures/create_export_list.png)
 
-Copy the contents of the generated file to the bottom of "UniversalProxyDLL.h" and build:
+Copy the contents of the generated file to somewhere at the bottom of "UniversalProxyDLL.h" and build:
 
 ![New exports pic](https://github.com/techiew/UniversalProxyDLL/blob/master/pictures/new_exports.png)
 
