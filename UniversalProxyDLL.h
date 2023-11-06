@@ -9,7 +9,7 @@
 #include <iomanip>
 #include <sstream>
 
-// The DLL will crash with incremental linking enabled for some reason.
+// The DLL will crash with incremental linking enabled.
 // This linker comment will override any other project setting.
 #pragma comment(linker, "/INCREMENTAL:NO")
 
@@ -66,7 +66,7 @@ namespace UPD
 	std::string SearchForDLLInSystemFolder(std::string dllFileName);
 	bool DoesFileExist(std::string filePath);
 	std::vector<unsigned char> LoadFileToVectorOfBytes(std::string filePath);
-	void ReadRequiredDataFromDLLExportTable(std::string dllFilePath);
+	void ReadRequiredDataFromDLLExportTable();
 	PIMAGE_DOS_HEADER GetDLLDosHeader(void* peHeaderBase);
 	PIMAGE_NT_HEADERS GetDLLNtHeaders(PIMAGE_DOS_HEADER dosHeader);
 	void SetSectionHeadersInfo(PIMAGE_FILE_HEADER fileHeader, PIMAGE_OPTIONAL_HEADER optionalHeader);
@@ -108,7 +108,7 @@ namespace UPD
 		std::string dllToProxyFileName = GetModuleFileNameFromModuleHandle(dllToProxy);
 		std::string dllFilePath = FindOriginalDLL(dllToProxyFileName, specificPathToSearch);
 		dllMemory = LoadFileToVectorOfBytes(dllFilePath);
-		ReadRequiredDataFromDLLExportTable(dllFilePath);
+		ReadRequiredDataFromDLLExportTable();
 		PrepareForwardFunctionsWithJumpsToAsm();
 		StartProxyCreationThread(dllFilePath);
 	}
@@ -219,7 +219,7 @@ namespace UPD
 		return std::vector<unsigned char>(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
 	}
 
-	void ReadRequiredDataFromDLLExportTable(std::string dllFilePath)
+	void ReadRequiredDataFromDLLExportTable()
 	{
 		void* peHeaderBase = &dllMemory[0];
 		PIMAGE_DOS_HEADER dosHeader = GetDLLDosHeader(peHeaderBase);
@@ -638,7 +638,11 @@ namespace UPD
 	}
 }
 
-// Macro hell begins!
+/*
+* Macro hell begins!
+* We have to populate our export table with functions from all supported DLLs, otherwise
+* the application will immediately fail to launch as the exports are checked.
+*/ 
 
 #define GenerateForwardFunction(N) extern "C" const char* Forward##N() { return("F"#N); }
 #define GenerateForwardOrdinalFunction(N) extern "C" const char* ForwardOrdinal##N() { return ("FO"#N); }
