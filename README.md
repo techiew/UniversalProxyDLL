@@ -68,6 +68,8 @@ Copy the contents of the generated file to somewhere at the bottom of "Universal
 
 The DLL should now be proxied correctly. 
 
+However if your DLL has more exports than the current amount of Forward and ForwardOrdinal functions, you must also use the scripts "create_export_ordinals.py" and "create_forward_functions.py" to generate an amount of functions equal to the number of exports of your DLL.
+
 **Note: some system DLLs such as user32 may refuse to be proxied!**
 
 ## Checking which DLLs a game loads
