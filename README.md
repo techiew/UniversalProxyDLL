@@ -54,7 +54,7 @@ Yes, technically this is not *universal*, only on paper. See section "Adding sup
 * bink2w64
 * vcruntime140
 * vcruntime140_1
-* msvcp140 (Needs explicit definition in [UniversalProxyDLL](https://github.com/techiew/UniversalProxyDLL/blob/master/UniversalProxyDLL.h#L13)
+* msvcp140 (Needs explicit definition in [UniversalProxyDLL](https://github.com/techiew/UniversalProxyDLL/blob/master/UniversalProxyDLL.h#L13))
 * msvcp140_1
 * msvcp140_2
 
