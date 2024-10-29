@@ -10,13 +10,13 @@ UPD::CreateProxy(dll);
 * No module definition files (.def) files required
 * No project configuration required
 * Built DLL can dynamically proxy any [supported DLL](#supported-dlls) without rebuilding (just rename the DLL)
-* Easily create [callbacks](#add-a-callback) for exported functions
+* Easily create [callbacks](#adding-a-callback) for exported functions
 * No race conditions (exported functions will wait for proxy creation)
 * No [LoadLibrary calls](https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-library-best-practices) within DllMain
 * Works for 32-bit and 64-bit games (32-bit has limited support!)
 
 ## Usage
-A simple DLL with a DllMain like this is all that is needed:
+A simple DllMain is all that is needed:
 
 ```cpp
 #include <Windows.h>
@@ -107,7 +107,7 @@ Your callback will be called directly prior to the exported function being execu
 **As for the** `return` **with a call to the original exported function - in some cases you might get away with omitting it, but I wouldn't recommend it.**
 
 ## Supported DLLs
-Yes, in practice this project is not truly *universal*, only in theory. See section "Adding support for a DLL". 
+Yes, in practice this project is not truly *universal*, only in theory. See section [Adding support for a DLL](#adding-support-for-a-dll). 
 
 **The most common proxy DLLs are supported out of the box:**
 * dxgi
@@ -146,6 +146,15 @@ The DLL should now be proxied correctly.
 To check which DLLs you can use to create proxies for specific games, you may for example use the `dumpbin` tool provided with Visual Studio:
 
 ![Dumpbin pic](https://github.com/techiew/UniversalProxyDLL/blob/master/pictures/dumpbin.png)
+
+## Precompiled DLL for chainloading
+I have provided a [precompiled DLL](https://github.com/techiew/UniversalProxyDLL/releases/tag/precompiled-dll) to be used for simple chainloading.
+
+The precompiled proxy DLL "dxgi.dll" will read the file "upd_chainload.txt" in the working directory and go through the file line by line, calling LoadLibrary on each DLL name it reads.
+
+As many DLLs as you wish can be entered into the file. Each DLL name must be separated with a newline and end with ".dll". Example entry: ```test.dll```. The precompiled DLL can be renamed to any of the supported DLLs.
+
+The DLL is built on this commit: be90a6041c447166f568f3b53eb4e7348c3074a0
 
 ## Used in...
 Some of my other projects, such as [DirectXHook](https://github.com/techiew/DirectXHook) and [Elden Mod Loader](https://github.com/techiew/EldenRingModLoader).
