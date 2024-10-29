@@ -58,7 +58,7 @@ namespace UPD
 	WORD numSections = 0;
 
 	// Function prototypes
-	void* RegisterCallback(std::string exportName, void* callback);
+	void* RegisterCallback(std::string exportName, void* callbackAddress);
 	void CreateProxy(HMODULE dllToProxy, std::string specificPathToSearch);
 	std::string GetModuleFileNameFromModuleHandle(HMODULE handle);
 	std::string FindOriginalDLL(std::string dllFileName, std::string specificPathToSearch);
@@ -94,13 +94,17 @@ namespace UPD
 	template<typename... Types> void Log(Types... args);
 	template<typename T> std::string NumberToHexString(T number);
 
-	void* RegisterCallback(std::string exportName, void* callback)
+	void* RegisterCallback(std::string exportName, void* callbackAddress)
 	{
-		if (callback != nullptr)
+		if (callbackAddress != nullptr)
 		{
-			callbacks[exportName].callbackAddress = (uintptr_t)callback;
-			Log("Registered callback: ", exportName);
+			callbacks[exportName].callbackAddress = (uintptr_t)callbackAddress;
+			Log("Registered callback for: ", exportName);
 			return &callbacks[exportName].returnAddress;
+		}
+		else
+		{
+			Log("Invalid callback (nullptr): ", exportName);
 		}
 		return nullptr;
 	}
