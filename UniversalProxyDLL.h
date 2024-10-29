@@ -1,5 +1,7 @@
 #pragma once
 
+// https://github.com/techiew/UniversalProxyDLL
+
 #include <Windows.h>
 #include <iostream>
 #include <vector>
@@ -597,12 +599,13 @@ namespace UPD
 
 		// Magic to fold variadic arguments prior to C++17
 		// https://stackoverflow.com/a/55717030
-		// If it doesn't work for you, switch to C++17 and replace the code block with:
+		// If it doesn't work for you, switch to C++17 or newer and replace the code block with:
 		// (stream << ... << args) << std::endl;
 		// std::cout << stream.str();
 		using do_ = int[];
 		do_{ 0, (stream << args, 0)... };
 		std::cout << stream.str() << std::endl;
+		//
 
 		if (logFile.is_open())
 		{
