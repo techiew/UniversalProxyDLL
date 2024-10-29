@@ -154,7 +154,7 @@ The precompiled proxy DLL "dxgi.dll" will read the file "upd_chainload.txt" in t
 
 As many DLLs as you wish can be entered into the file. Each DLL name must be separated with a newline and end with ".dll". Example entry: ```test.dll```. The precompiled DLL can be renamed to any of the supported DLLs.
 
-The DLL is built on this commit: be90a6041c447166f568f3b53eb4e7348c3074a0
+The DLL is built on this commit: [be90a6041c447166f568f3b53eb4e7348c3074a0](https://github.com/techiew/UniversalProxyDLL/commit/be90a6041c447166f568f3b53eb4e7348c3074a0)
 
 ## Used in...
 Some of my other projects, such as [DirectXHook](https://github.com/techiew/DirectXHook) and [Elden Mod Loader](https://github.com/techiew/EldenRingModLoader).
