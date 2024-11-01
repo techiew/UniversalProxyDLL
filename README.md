@@ -113,7 +113,7 @@ Yes, in practice this project is not truly *universal*, only in theory. See sect
 * dxgi
 * d3d10
 * d3d11
-* d3d12
+* d3d12 (callbacks won't work, see #1)
 * dinput8
 * XInput1_3
 * XInput1_4
