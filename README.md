@@ -113,7 +113,7 @@ Yes, in practice this project is not truly *universal*, only in theory. See sect
 * dxgi
 * d3d10
 * d3d11
-* ~~d3d12~~ (see issue [#1](https://github.com/techiew/UniversalProxyDLL/issues/1))
+* d3d12
 * dinput8
 * XInput1_3
 * XInput1_4

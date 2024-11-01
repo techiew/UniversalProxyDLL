@@ -805,8 +805,31 @@ Export(0, D3D10CompileEffectFromMemory) Export(1, D3D10CompileShader) Export(2, 
 Export(0, D3D11CreateDeviceForD3D12) Export(1, D3DKMTCloseAdapter) Export(2, D3DKMTDestroyAllocation) Export(3, D3DKMTDestroyContext) Export(4, D3DKMTDestroyDevice) Export(5, D3DKMTDestroySynchronizationObject) Export(6, D3DKMTPresent) Export(7, D3DKMTQueryAdapterInfo) Export(8, D3DKMTSetDisplayPrivateDriverFormat) Export(9, D3DKMTSignalSynchronizationObject) Export(10, D3DKMTUnlock) Export(11, D3DKMTWaitForSynchronizationObject) Export(12, EnableFeatureLevelUpgrade) Export(13, OpenAdapter10) Export(14, OpenAdapter10_2) Export(15, CreateDirect3D11DeviceFromDXGIDevice) Export(16, CreateDirect3D11SurfaceFromDXGISurface) Export(17, D3D11CoreCreateDevice) Export(18, D3D11CoreCreateLayeredDevice) Export(19, D3D11CoreGetLayeredDeviceSize) Export(20, D3D11CoreRegisterLayers) Export(21, D3D11CreateDevice) Export(22, D3D11CreateDeviceAndSwapChain) Export(23, D3D11On12CreateDevice) Export(24, D3DKMTCreateAllocation) Export(25, D3DKMTCreateContext) Export(26, D3DKMTCreateDevice) Export(27, D3DKMTCreateSynchronizationObject) Export(28, D3DKMTEscape) Export(29, D3DKMTGetContextSchedulingPriority) Export(30, D3DKMTGetDeviceState) Export(31, D3DKMTGetDisplayModeList) Export(32, D3DKMTGetMultisampleMethodList) Export(33, D3DKMTGetRuntimeData) Export(34, D3DKMTGetSharedPrimaryHandle) Export(35, D3DKMTLock) Export(36, D3DKMTOpenAdapterFromHdc) Export(37, D3DKMTOpenResource) Export(38, D3DKMTQueryAllocationResidency) Export(39, D3DKMTQueryResourceInfo) Export(40, D3DKMTRender) Export(41, D3DKMTSetAllocationPriority) Export(42, D3DKMTSetContextSchedulingPriority) Export(43, D3DKMTSetDisplayMode) Export(44, D3DKMTSetGammaRamp) Export(45, D3DKMTSetVidPnSourceOwner) Export(46, D3DKMTWaitForVerticalBlankEvent) Export(47, D3DPerformance_BeginEvent) Export(48, D3DPerformance_EndEvent) Export(49, D3DPerformance_GetStatus)
 Export(50, D3DPerformance_SetMarker)
 
-// d3d12 - crashes for some unknown reason!
-Export(0, GetBehaviorValue) Export(1, D3D12CreateDevice) Export(2, D3D12GetDebugInterface) Export(3, SetAppCompatStringPointer) Export(4, D3D12CoreCreateLayeredDevice) Export(5, D3D12CoreGetLayeredDeviceSize) Export(6, D3D12CoreRegisterLayers) Export(7, D3D12CreateRootSignatureDeserializer) Export(8, D3D12CreateVersionedRootSignatureDeserializer) Export(9, D3D12DeviceRemovedExtendedData) Export(10, D3D12EnableExperimentalFeatures) Export(11, D3D12GetInterface) Export(12, D3D12PIXEventsReplaceBlock) Export(13, D3D12PIXGetThreadInfo) Export(14, D3D12PIXNotifyWakeFromFenceSignal) Export(15, D3D12PIXReportCounter) Export(16, D3D12SerializeRootSignature) Export(17, D3D12SerializeVersionedRootSignature)
+// d3d12
+#ifdef _WIN64
+#define DLLPATH "\\\\.\\GLOBALROOT\\SystemRoot\\System32\\D3D12.dll"
+#else
+#define DLLPATH "\\\\.\\GLOBALROOT\\SystemRoot\\SysWOW64\\D3D12.dll"
+#endif
+#pragma comment(linker, "/EXPORT:D3D12CoreCreateLayeredDevice=" DLLPATH ".D3D12CoreCreateLayeredDevice")
+#pragma comment(linker, "/EXPORT:D3D12CoreGetLayeredDeviceSize=" DLLPATH ".D3D12CoreGetLayeredDeviceSize")
+#pragma comment(linker, "/EXPORT:D3D12CoreRegisterLayers=" DLLPATH ".D3D12CoreRegisterLayers")
+#pragma comment(linker, "/EXPORT:D3D12CreateDevice=" DLLPATH ".D3D12CreateDevice")
+#pragma comment(linker, "/EXPORT:D3D12CreateRootSignatureDeserializer=" DLLPATH ".D3D12CreateRootSignatureDeserializer")
+#pragma comment(linker, "/EXPORT:D3D12CreateVersionedRootSignatureDeserializer=" DLLPATH ".D3D12CreateVersionedRootSignatureDeserializer")
+#pragma comment(linker, "/EXPORT:D3D12DeviceRemovedExtendedData=" DLLPATH ".D3D12DeviceRemovedExtendedData")
+#pragma comment(linker, "/EXPORT:D3D12EnableExperimentalFeatures=" DLLPATH ".D3D12EnableExperimentalFeatures")
+#pragma comment(linker, "/EXPORT:D3D12GetDebugInterface=" DLLPATH ".D3D12GetDebugInterface")
+#pragma comment(linker, "/EXPORT:D3D12GetInterface=" DLLPATH ".D3D12GetInterface")
+#pragma comment(linker, "/EXPORT:D3D12PIXEventsReplaceBlock=" DLLPATH ".D3D12PIXEventsReplaceBlock")
+#pragma comment(linker, "/EXPORT:D3D12PIXGetThreadInfo=" DLLPATH ".D3D12PIXGetThreadInfo")
+#pragma comment(linker, "/EXPORT:D3D12PIXNotifyWakeFromFenceSignal=" DLLPATH ".D3D12PIXNotifyWakeFromFenceSignal")
+#pragma comment(linker, "/EXPORT:D3D12PIXReportCounter=" DLLPATH ".D3D12PIXReportCounter")
+#pragma comment(linker, "/EXPORT:D3D12SerializeRootSignature=" DLLPATH ".D3D12SerializeRootSignature")
+#pragma comment(linker, "/EXPORT:D3D12SerializeVersionedRootSignature=" DLLPATH ".D3D12SerializeVersionedRootSignature")
+#pragma comment(linker, "/EXPORT:GetBehaviorValue=" DLLPATH ".GetBehaviorValue")
+#pragma comment(linker, "/EXPORT:SetAppCompatStringPointer=" DLLPATH ".SetAppCompatStringPointer")
+#pragma comment(linker, "/EXPORT:__proxy9999=" DLLPATH ".#9999,@9999,NONAME")
 
 // dinput8
 Export(0, DirectInput8Create) Export(1, DllCanUnloadNow) Export(2, DllGetClassObject) Export(3, DllRegisterServer) Export(4, DllUnregisterServer) Export(5, GetdfDIJoystick)
